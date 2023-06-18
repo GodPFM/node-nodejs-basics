@@ -10,7 +10,7 @@ const pathToFile = path.resolve(pathToFolder, 'fresh.txt')
 const create = async () => {
   fs.writeFile(pathToFile, 'I am fresh and young',{ flag: 'wx' } ,(err) => {
     if (err) {
-      throw 'FS operation failed'
+      throw new Error('FS operation failed');
     }
   })
 };
