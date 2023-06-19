@@ -18,14 +18,13 @@ const performCalculations = async () => {
         resolve({status: 'resolved', data: msg})
       })
       worker.on('error', msg => {
-        resolve({status: 'error', data: msg});
+        resolve({status: 'error', data: null});
       })
       worker.on('exit', msg => {
         resolve({status: 'exit', data: msg});
       })
     })
   }))).map(item => item.value);
-  process.stdout.write(JSON.stringify(results));
   // results.forEach((item, index) => {
   //   process.stdout.write(`Worker №${index + 1} end task with status \'${item.value.status}\' and result is ${item.value.data}\n`)
   // })
