@@ -25,6 +25,7 @@ const performCalculations = async () => {
       })
     })
   }))).map(item => item.value);
+  console.log(results);
   // results.forEach((item, index) => {
   //   process.stdout.write(`Worker №${index + 1} end task with status \'${item.value.status}\' and result is ${item.value.data}\n`)
   // })
