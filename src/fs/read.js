@@ -11,7 +11,7 @@ const read = async (fileToRead, folder) => {
     if (err) {
       throw new Error('Can\'t find directory. Check your path');
     }
-    const foundFiles = files.forEach((file) => {
+    const foundFiles = files.filter((file) => {
       if (file.name === fileToRead) {
         if (file.isFile()) {
           fs.readFile(path.resolve(pathToFolder, file.name), { encoding: 'utf8' }, (err, data) => {
@@ -22,11 +22,11 @@ const read = async (fileToRead, folder) => {
           })
           return file.name;
         } else {
-          throw new Error;
+          process.stdout.write('This is not a file');
         }
       }
     })
-    if (!foundFiles) {
+    if (!foundFiles.length) {
       throw new Error('FS operation failed');
     }
   })
